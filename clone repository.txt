@@ -1,0 +1,30 @@
+githubで新規リポジトリ（新規プロジェクト）作成
+
+ミラーリング元リポジトリをローカルに取得
+$ git clone --mirror ミラーリポジトリのURL(https) 新規リポジトリ名
+$ cd 新規リポジトリ名
+
+push先だけミラーリング先リポジトリに差し替えて確認
+$ git remote set-url --push origin 新規リポジトリのURL(https)
+$ git remote -v
+origin  https://gitlab.com/oohira/awesome-source.git (fetch)
+origin  https://gitlab.com/oohira/awesome-mirror.git (push)
+
+ミラーリング元リポジトリの変更をローカルに取得（初回は不要）
+$ git remote update
+
+ローカルをミラーリング先リポジトリにpush
+$ git push --mirror
+
+2021年8月13日からGitでリモートにアクセスができなくなった。Support for password authentication was removed on August 13, 2021.
+push時にこのエラーが出るため個人用トークンをパスワードに入力する
+
+ここまで完了すると新規リポジトリにブランチが２つ存在する
+github側でdefaultブランチを切り替える。必要があれば名称変更も実施する。
+
+不要ブランチをローカルリポジトリとリモートリポジトリから削除する。
+ローカルリポジトリ
+git branch -d　不要ブランチ名
+
+リモートリポジトリ
+git push origin --delete fix/authentication
