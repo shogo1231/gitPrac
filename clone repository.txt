@@ -28,5 +28,3 @@ git branch -d　不要ブランチ名
 
 リモートリポジトリ
 git push origin --delete fix/authentication
-
-kousinn
